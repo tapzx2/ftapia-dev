@@ -1,0 +1,92 @@
+
+/* layout */
+
+.section.main-content {
+    margin-top: 30px;
+    display: grid;
+    width: auto;
+    padding-left: 30px;
+    grid-auto-columns: 1fr;
+    grid-column-gap: 16px;
+    grid-row-gap: 13px;
+    grid-template-areas: ".";
+    -ms-grid-columns: 0.25fr 16px 1.5fr;
+    grid-template-columns: 0.25fr 1.5fr;
+    -ms-grid-rows: auto 13px auto 13px auto 13px auto;
+    grid-template-rows: auto auto auto auto;
+  }
+
+.right > img{
+    width:95%;
+    max-width:100%;
+}
+
+/* fonts */
+
+body {
+    background-color:#272727;
+    color:#FFFFFF;
+    font-family:Trebuchet, Trebuchet MS, Tahoma, Arial, sans-serif;
+    font-size: 12px;
+}
+
+a, :link {
+    text-decoration: none;
+    color:orange;
+}
+
+h1{
+    text-transform: uppercase;
+    font-size:150%;
+    letter-spacing: 2px;
+}
+
+h2 {
+    font-size:110%;
+    line-height: 100%;
+    letter-spacing: 1px;
+    margin-bottom:10px;
+}
+
+/* menu */
+
+li{
+    display:block;
+    transition-duration:.5s;
+}
+
+li.first-level{
+    font-size:130%;
+}
+
+li.second-level{
+    font-size:12px;
+}
+
+ul li{
+    position: relative;
+}
+
+ul li ul {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    transition: all 0.5s ease;
+    margin-top: 1rem;
+    left: 0;
+    display: none;
+  }
+
+ul li:hover > ul,
+ul li ul:hover {
+  visibility: visible;
+  opacity: 1;
+  display: block;
+  position: absolute;
+  left:80px;
+}
+
+ul li ul li {
+  clear: both;
+  width: 100%;
+}
