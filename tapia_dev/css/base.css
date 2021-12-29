@@ -32,6 +32,10 @@ body {
 
 a, :link {
     text-decoration: none;
+    cursor: pointer;
+}
+
+a:hover {
     color:orange;
 }
 
@@ -48,11 +52,31 @@ h2 {
     margin-bottom:10px;
 }
 
-/* menu */
+/* contact info */
+
+.business-card {
+    margin-bottom: 20px;
+}
+
+#badge, #badge:hover {
+    color: white;
+}
+
+#phone, #email{
+    color:whitesmoke;
+}
+
+#phone:hover, #email:hover{
+    color:orange;
+}
+
+
+/* nav */
 
 li{
     display:block;
     transition-duration:.5s;
+    margin-bottom: 15px;
 }
 
 li.first-level{
@@ -71,7 +95,6 @@ ul li ul {
     visibility: hidden;
     opacity: 0;
     position: absolute;
-    transition: all 0.5s ease;
     margin-top: 1rem;
     left: 0;
     display: none;
@@ -83,10 +106,24 @@ ul li ul:hover {
   opacity: 1;
   display: block;
   position: absolute;
-  left:80px;
+  left:87px;
+  top:-15px;
+  z-index:99999;
 }
 
 ul li ul li {
-  clear: both;
+  /*clear: both;*/
   width: 100%;
 }
+
+ul li ul li:hover {
+    /*clear: both;*/
+    width: 100%;
+}
+
+.first-level.icon{
+    width:30px;
+    height:30px;
+}
+
+

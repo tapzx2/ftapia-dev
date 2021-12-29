@@ -12,15 +12,15 @@
     <div class="section main-content">
         <div class="left">
             <div class="business-card">
-                <a href="index.html">
+                <a id="badge" href="index.html">
                     <h1>Frank Tapia</h1>
                     <h2>Commerical<br>Photography Studio</h2>
                     <h2>San Francisco<br>Bay Area</h2>
                 </a>
-                <div><a href="tel:5108490772">510 849-0772</a></div>
-                <div><a href="mailto:frank1@ftapia.com">frank1@ftapia.com</a></div>
+                <div><a id="phone" href="tel:5108490772">510 849-0772</a></div>
+                <div><a id="email" href="mailto:frank1@ftapia.com">frank1@ftapia.com</a></div>
             </div>
-            <menu class="menu-container">
+            <nav class="menu-container">
                 <ul>
                     <li class="first-level">PORTFOLIO
                         <ul>
@@ -34,29 +34,53 @@
                     </li>
                     <li class="first-level">ABOUT
                         <ul>
-                            <li class="second-level"><a>Frank</a></li>
-                            <li class="second-level"><a>Blog</a></li>
-                            <li class="second-level"><a>Clients</a></li>
+                            <li class="second-level"><a>frank</a></li>
+                            <li class="second-level"><a>blog</a></li>
+                            <li class="second-level"><a>clients</a></li>
                         </ul>
                     </li>
                     <li class="first-level">SERVICES
                         <ul>
                             <li class="second-level"><a>portraits</a></li>
-                            <li class="second-level"><a>photo studio</a></li>
+                            <li class="second-level"><a>studio</a></li>
                             <li class="second-level"><a>cost</a></li>
                         </ul>
                     </li>
                     <li class="first-level">
                         <a>CONTACT</a>
                     </li>
+                    <li class="first-level icon">
+                        <a target="_blank" href="https://www.linkedin.com/in/franktapia/"><img src="img/icons/frank-tapia-commercial-photographer-linkedin.svg"></a>
+                    </li>
+                    <li class="first-level icon">
+                        <a id="facebook" target="_blank" href="https://www.facebook.com/FrankTapiaPhotographyStudio/"><img class="facebook" src="img/icons/frank-tapia-commercial-photographer-facebook.svg"></a>
+                    </li>
                 </ul>
-            </menu>
+            </nav>
         </div>
         <div class="right">
-            <img src="img/1 san francisco beauty portrait photography954x636.jpg">
+            <img class="slideshow" src="img/1 san francisco beauty portrait photography954x636.jpg">
+            <img src="img/san francisco advertising photography.jpg">
+            <img src="img/56 portrait_environmental.jpg">
+            <img src="img/34 advertising_image_cyan_lab.jpg">
         </div>
     </div>
     <div class="section seo-content"></div>
     
 </body>
+<script>
+      var indexValue = 0;
+      function slideShow(){
+        setTimeout(slideShow, 2500);
+        var x;
+        const img = document.querySelectorAll(".right > img");
+        for(x = 0; x < img.length; x++){
+          img[x].style.display = "none";
+        }
+        indexValue++;
+        if(indexValue > img.length){indexValue = 1}
+        img[indexValue -1].style.display = "block";
+      }
+      slideShow();
+    </script>
 </html>
