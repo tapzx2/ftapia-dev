@@ -126,7 +126,7 @@ ul li ul li:hover {
     height:30px;
 }
 
-/* seo content acord */
+
 /* Accordion styles */
 input {
     position: absolute;
@@ -189,4 +189,14 @@ input:checked + .tab-label::after {
 input:checked ~ .tab-content {
     max-height: 100vh;
     padding: 1em;
+}
+/* seo content acord */
+.seo-content{
+    height:13px;
+    font-size: 10px;
+    overflow: hidden;
+}
+.seo-content:hover{
+    height:20px;
+    overflow:visible;
 }
