@@ -1,0 +1,14 @@
+.right{
+    display:flex;
+    align-items: center;
+}
+
+.contact_info{
+    margin-right:20px;
+    font-size: 24px;
+}
+
+img.contact-img {
+    max-width: 400px;
+    object-fit: contain;
+}
