@@ -7,6 +7,7 @@
     <title>Frank Tapia Commercial Photograpy Studio San Francisco Bay Area</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/pages.css">
 </head>
 <body>
     <div class="section main-content">
@@ -59,10 +60,20 @@
             </nav>
         </div>
         <div class="right">
-            <img class="slideshow" src="img/1 san francisco beauty portrait photography954x636.jpg">
-            <img src="img/san francisco advertising photography.jpg">
-            <img src="img/56 portrait_environmental.jpg">
-            <img src="img/34 advertising_image_cyan_lab.jpg">
+            <img class="slideshow" src="img/12 advertising_photography954x636.jpg">
+            <img src="img/11 advertising_photographer_ san francisco.jpg">
+            <img src="img/14 advertising_image_fuse arct954x636.jpg">
+            <img src="img/21 advertising_image _abramson-smith-waldsmith , llp,954x636.jpg">
+            <img style="max-width: 636px" src="img/23advertising_image _abramson-smith-waldsmith ,-llp,605x636.jpg" alt="">
+            <img src="img/24advertising_image _abramson-smith-waldsmith,-llp,954x636.jpg" alt="">
+            <div class="mini-images">
+                <img class="mini-image" src="img/mini/12 advertising_photography295x197.jpg" alt="">
+                <img class="mini-image" src="img/mini/11 advertising_photographer_ san francisco295x197.jpg" alt="">
+                <img class="mini-image" src="img/mini/14 advertising_image_fuse arct295x197.jpg" alt="">
+                <img class="mini-image" src="img/mini/21 advertising_image _abramson-smith-waldsmith , llp,295x197.jpg" alt="">
+                <img class="mini-image" src="img/mini/23advertising_image _abramson-smith-waldsmith ,-llp,187x197.jpg" alt="">
+                <img class="mini-image" src="img/mini/24advertising_image _abramson-smith-waldsmith,-llp,470x314.jpg" alt="">
+            </div>
             <div class="seo-content">
                 <p>Frank Tapia Commercial Photography Studio serving the San Francisco Bay Area for advertising, architectural, beauty portraits, corporate headshots, industrial, portrait and product photography.</p>
                 <div class="tabs">
@@ -146,18 +157,47 @@
     </div>
 </body>
 <script>
-      var indexValue = 0;
-      function slideShow(){
-        setTimeout(slideShow, 2500);
-        var x;
-        const img = document.querySelectorAll(".right > img");
-        for(x = 0; x < img.length; x++){
-          img[x].style.display = "none";
+
+var indexValue = 0;
+const img = document.querySelectorAll(".right > img");
+const mini_img = document.querySelectorAll(".mini-images > img");
+
+for(x = 0; x < img.length; x++){
+    img[x].style.display = "none";
+}
+img[indexValue].style.display = "block";
+
+function slideShowNav(){
+    for (x=0; x < mini_img.length; x++){
+        mini_img[x].imageNumber = x
+        mini_img[x].onclick = function beenClicked() {
+            for(x = 0; x < img.length; x++){
+                img[x].style.display = "none";
+            }
+            console.log("mini image number clicked: "  + event.target.imageNumber.toString())
+            console.log()
+            console.log("mini image index: " + indexValue.toString());
+            indexValue = event.target.imageNumber;
+            img[indexValue].style.display = "block";
         }
+    }
+}
+
+function slideShow(){
+    setTimeout(slideShow, 2500);
+    setTimeout(() =>{
+        console.log('running')
+        img[indexValue].style.display = "none";
         indexValue++;
-        if(indexValue > img.length){indexValue = 1}
-        img[indexValue -1].style.display = "block";
-      }
-      slideShow();
-    </script>
+        if(indexValue >= img.length) {
+            indexValue = 0
+        }
+        img[indexValue].style.display = "block";
+    }, 2500)  
+}
+
+slideShowNav();
+slideShow();
+
+</script>
 </html>
