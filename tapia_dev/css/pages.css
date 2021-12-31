@@ -1,6 +1,7 @@
 .mini-images{
     display:flex;
     width:95%;
+    flex-wrap: wrap;
 }
 .mini-image{
     object-fit:cover;
