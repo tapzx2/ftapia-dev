@@ -3,7 +3,7 @@
     width:95%;
 }
 .mini-image{
-    object-fit: cover;
+    object-fit:cover;
     margin-top:20px;
     width:30px;
     margin-left:5px;
