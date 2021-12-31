@@ -133,3 +133,160 @@ print('\n'.join(cleaned))
 <img    src="images/32%20corporate%20working%20image954x636.jpg" alt=""    id="u5071_img"  >
 <img    src="images/33%20corporate%20working_william%20blair954x636.jpg" alt=""    id="u5091_img"  >
 <img    src="images/34%20corporate-image_federal-deposit-insurance-corp-954x636.jpg" alt=""    id="u5111_img"  >
+
+# ROUND 2 MINI IMAGES
+
+import re
+
+data = '''<div class="clearfix grpelem" id="pu4455"><!-- column -->
+<div class="SSSlideLink clip_frame colelem" data-col-pos="0" id="u4455" role="tab" tabindex="-1" aria-selected="false" aria-controls="u4462" style="height: 33px;"><!-- image -->
+  <img class="block" data-col-pos="0" alt="" data-heightwidthratio="0.8571428571428571" data-image-width="42" data-image-height="36" src="images/11%20corporate_group_grube-brown---geidt-llp-crop-u44552.jpg?crc=4233404665" id="u4455_img" data-widget-id="slideshowu4449" style="height: 33.4286px;">
+</div>
+<div class="SSSlideLink clip_frame colelem wp-tab-active SSSlideLinkSelected" data-col-pos="2" id="u4737" role="tab" tabindex="0" aria-selected="true" aria-controls="u4731" style="height: 33px;"><!-- image -->
+  <img class="block" data-col-pos="2" alt="" data-heightwidthratio="0.8571428571428571" data-image-width="42" data-image-height="36" src="images/13%20corporate_portrait_scott-a-freedman-of-zacks---freedman%2c-pc-crop-u47372.jpg?crc=4048089480" id="u4737_img" data-widget-id="slideshowu4449" style="height: 33.4286px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="4" id="u496293" role="tab" tabindex="-1" aria-selected="false" aria-controls="u496271" style="height: 33px;"><!-- image -->
+  <img class="block" data-col-pos="4" alt="" data-heightwidthratio="0.8571428571428571" data-image-width="42" data-image-height="36" src="images/141%20corporate_group_bogaards%20law-crop-u4962932.jpg?crc=4106109075" id="u496293_img" data-widget-id="slideshowu4449" style="height: 33.4286px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="6" id="u4777" role="tab" tabindex="-1" aria-selected="false" aria-controls="u4771" style="height: 33px;"><!-- image -->
+  <img class="block" data-col-pos="6" alt="" data-heightwidthratio="0.8571428571428571" data-image-width="42" data-image-height="36" src="images/15_corporate_group_image_teraoka%20-%20partners-crop-u47772.jpg?crc=3770051416" id="u4777_img" data-widget-id="slideshowu4449" style="height: 33.4286px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="8" id="u4817" role="tab" tabindex="-1" aria-selected="false" aria-controls="u4811" style="height: 33px;"><!-- image -->
+  <img class="block" data-col-pos="8" alt="" data-heightwidthratio="0.8571428571428571" data-image-width="42" data-image-height="36" src="images/17%20corporate_portrait_mary-alexander-crop-u48172.jpg?crc=4012432367" id="u4817_img" data-widget-id="slideshowu4449" style="height: 33.4286px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="10" id="u4857" role="tab" tabindex="-1" aria-selected="false" aria-controls="u4851" style="height: 33px;"><!-- image -->
+  <img class="block" data-col-pos="10" alt="" data-heightwidthratio="0.8571428571428571" data-image-width="42" data-image-height="36" src="images/19%20corporate_group-crop-u48572.jpg?crc=3967141576" id="u4857_img" data-widget-id="slideshowu4449" style="height: 33.4286px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="12" id="u4897" role="tab" tabindex="-1" aria-selected="false" aria-controls="u4891" style="height: 33px;"><!-- image -->
+  <img class="block" data-col-pos="12" alt="" data-heightwidthratio="0.8571428571428571" data-image-width="42" data-image-height="36" src="images/22%20corporate_group_simon%20-%20bancroft%20-%20wired%20magazine%20-crop-u48972.jpg?crc=3920750941" id="u4897_img" data-widget-id="slideshowu4449" style="height: 33.4286px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="14" id="u4937" role="tab" tabindex="-1" aria-selected="false" aria-controls="u4931" style="height: 33px;"><!-- image -->
+  <img class="block" data-col-pos="14" alt="" data-heightwidthratio="0.8571428571428571" data-image-width="42" data-image-height="36" src="images/24%20corporate%20_portrait--crop-u49372.jpg?crc=96598664" id="u4937_img" data-widget-id="slideshowu4449" style="height: 33.4286px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="16" id="u4977" role="tab" tabindex="-1" aria-selected="false" aria-controls="u4971" style="height: 33px;"><!-- image -->
+  <img class="block" data-col-pos="16" alt="" data-heightwidthratio="0.8571428571428571" data-image-width="42" data-image-height="36" src="images/26%20corporate-group-image_kerr---wagstaffe-crop-u49772.jpg?crc=50799524" id="u4977_img" data-widget-id="slideshowu4449" style="height: 33.4286px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="18" id="u5017" role="tab" tabindex="-1" aria-selected="false" aria-controls="u5011" style="height: 33px;"><!-- image -->
+  <img class="block" data-col-pos="18" alt="" data-heightwidthratio="0.8571428571428571" data-image-width="42" data-image-height="36" src="images/27%20corporate_working_group-crop-u50172.jpg?crc=337892856" id="u5017_img" data-widget-id="slideshowu4449" style="height: 33.4286px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="20" id="u496535" role="tab" tabindex="-1" aria-selected="false" aria-controls="u496513" style="height: 33px;"><!-- image -->
+  <img class="block" data-col-pos="20" alt="" data-heightwidthratio="0.8571428571428571" data-image-width="42" data-image-height="36" src="images/37%20corporate_group-robert%20w%20wood%20pc-crop-u4965352.jpg?crc=4110869804" id="u496535_img" data-widget-id="slideshowu4449" style="height: 33.4286px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="22" id="u496663" role="tab" tabindex="-1" aria-selected="false" aria-controls="u496645" style="height: 33px;"><!-- image -->
+  <img class="block" data-col-pos="22" alt="" data-heightwidthratio="0.8571428571428571" data-image-width="42" data-image-height="36" src="images/39%20corporate_working_william%20blair-crop-u4966632.jpg?crc=4036463461" id="u496663_img" data-widget-id="slideshowu4449" style="height: 33.4286px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="24" id="u5077" role="tab" tabindex="-1" aria-selected="false" aria-controls="u5071" style="height: 33px;"><!-- image -->
+  <img class="block" data-col-pos="24" alt="" data-heightwidthratio="0.8571428571428571" data-image-width="42" data-image-height="36" src="images/32%20corporate%20working%20image-crop-u50772.jpg?crc=334386491" id="u5077_img" data-widget-id="slideshowu4449" style="height: 33.4286px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="26" id="u5117" role="tab" tabindex="-1" aria-selected="false" aria-controls="u5111" style="height: 33px;"><!-- image -->
+  <img class="block" data-col-pos="26" alt="" data-heightwidthratio="0.8571428571428571" data-image-width="42" data-image-height="36" src="images/34%20corporate-image_federal-deposit-insurance-corp--crop-u51172.jpg?crc=4046281160" id="u5117_img" data-widget-id="slideshowu4449" style="height: 33.4286px;">
+</div>
+</div><!-- column -->
+<div class="SSSlideLink clip_frame colelem" data-col-pos="1" id="u4717" role="tab" tabindex="-1" aria-selected="false" aria-controls="u4711" style="height: 33px;"><!-- image -->
+  <img class="block" data-col-pos="1" alt="" data-heightwidthratio="0.8571428571428571" data-image-width="42" data-image-height="36" src="images/12-corporate_portrait_delacey-riebel-family-law-crop-u47172.jpg?crc=4180388743" id="u4717_img" data-widget-id="slideshowu4449" style="height: 33.4286px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="3" id="u4757" role="tab" tabindex="-1" aria-selected="false" aria-controls="u4751" style="height: 33px;"><!-- image -->
+  <img class="block" data-col-pos="3" alt="" data-heightwidthratio="0.8571428571428571" data-image-width="42" data-image-height="36" src="images/14%20corporate_portrait_lorber-greenfield---polito-llp-crop-u47572.jpg?crc=307722839" id="u4757_img" data-widget-id="slideshowu4449" style="height: 33.4286px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="5" id="u496369" role="tab" tabindex="-1" aria-selected="false" aria-controls="u496347" style="height: 33px;"><!-- image -->
+  <img class="block" data-col-pos="5" alt="" data-heightwidthratio="0.8571428571428571" data-image-width="42" data-image-height="36" src="images/151corporate_group_alto%20litigation-crop-u4963692.jpg?crc=485199380" id="u496369_img" data-widget-id="slideshowu4449" style="height: 33.4286px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="7" id="u496445" role="tab" tabindex="-1" aria-selected="false" aria-controls="u496423" style="height: 33px;"><!-- image -->
+  <img class="block" data-col-pos="7" alt="" data-heightwidthratio="0.8571428571428571" data-image-width="42" data-image-height="36" src="images/16%20corporate_group_hartog%20i%20baer%20i%20hand-crop-u4964452.jpg?crc=220471627" id="u496445_img" data-widget-id="slideshowu4449" style="height: 33.4286px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="9" id="u4837" role="tab" tabindex="-1" aria-selected="false" aria-controls="u4831" style="height: 33px;"><!-- image -->
+  <img class="block" data-col-pos="9" alt="" data-heightwidthratio="0.8571428571428571" data-image-width="42" data-image-height="36" src="images/18%20corporate_working_image-crop-u48372.jpg?crc=3926752735" id="u4837_img" data-widget-id="slideshowu4449" style="height: 33.4286px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="11" id="u4877" role="tab" tabindex="-1" aria-selected="false" aria-controls="u4871" style="height: 33px;"><!-- image -->
+  <img class="block" data-col-pos="11" alt="" data-heightwidthratio="0.8571428571428571" data-image-width="42" data-image-height="36" src="images/21%20corporate%20_portrait-richard%20sideman-crop-u48772.jpg?crc=4055878155" id="u4877_img" data-widget-id="slideshowu4449" style="height: 33.4286px;">
+</div>
+<div class="SSSlideLink clip_frame colelem wp-tab-active SSSlideLinkSelected" data-col-pos="13" id="u4917" role="tab" tabindex="0" aria-selected="true" aria-controls="u4911" style="height: 33px;"><!-- image -->
+  <img class="block" data-col-pos="13" alt="" data-heightwidthratio="0.8571428571428571" data-image-width="42" data-image-height="36" src="images/23%20corporate_group_%20image_gwilliam%2c%20ivary%2c%20chiosso-crop-u49172.jpg?crc=3971421740" id="u4917_img" data-widget-id="slideshowu4449" style="height: 33.4286px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="15" id="u4957" role="tab" tabindex="-1" aria-selected="false" aria-controls="u4951" style="height: 33px;"><!-- image -->
+  <img class="block" data-col-pos="15" alt="" data-heightwidthratio="0.8571428571428571" data-image-width="42" data-image-height="36" src="images/25%20corporate_image-crop-u49572.jpg?crc=3766914098" id="u4957_img" data-widget-id="slideshowu4449" style="height: 33.4286px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="17" id="u4997" role="tab" tabindex="-1" aria-selected="false" aria-controls="u4991" style="height: 33px;"><!-- image -->
+  <img class="block" data-col-pos="17" alt="" data-heightwidthratio="0.8571428571428571" data-image-width="42" data-image-height="36" src="images/27%20corporate_safeway%20general_counsel-robert%20gordon-crop-u49972.jpg?crc=4093446417" id="u4997_img" data-widget-id="slideshowu4449" style="height: 33.4286px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="19" id="u5037" role="tab" tabindex="-1" aria-selected="false" aria-controls="u5031" style="height: 33px;"><!-- image -->
+  <img class="block" data-col-pos="19" alt="" data-heightwidthratio="0.8571428571428571" data-image-width="42" data-image-height="36" src="images/28%20corporate_ceo%20of%20kaiser%20permanente%20_health%20plan%20of%20san%20francisco_blue%20shield%20of%20ca-crop-u50372.jpg?crc=3845459036" id="u5037_img" data-widget-id="slideshowu4449" style="height: 33.4286px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="21" id="u496599" role="tab" tabindex="-1" aria-selected="false" aria-controls="u496581" style="height: 33px;"><!-- image -->
+  <img class="block" data-col-pos="21" alt="" data-heightwidthratio="0.8571428571428571" data-image-width="42" data-image-height="36" src="images/38%20corporate-group_venardi%20zurada%20llp-crop-u4965992.jpg?crc=3854643040" id="u496599_img" data-widget-id="slideshowu4449" style="height: 33.4286px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="23" id="u5057" role="tab" tabindex="-1" aria-selected="false" aria-controls="u5051" style="height: 33px;"><!-- image -->
+  <img class="block" data-col-pos="23" alt="" data-heightwidthratio="0.8571428571428571" data-image-width="42" data-image-height="36" src="images/31%20corporate_working_image-crop-u50572.jpg?crc=4287147464" id="u5057_img" data-widget-id="slideshowu4449" style="height: 33.4286px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="25" id="u5097" role="tab" tabindex="-1" aria-selected="false" aria-controls="u5091" style="height: 33px;"><!-- image -->
+  <img class="block" data-col-pos="25" alt="" data-heightwidthratio="0.8571428571428571" data-image-width="42" data-image-height="36" src="images/33%20corporate%20working_william%20blair-crop-u50972.jpg?crc=334511512" id="u5097_img" data-widget-id="slideshowu4449" style="height: 33.4286px;">
+</div>'''
+
+to_remove = [
+  '\<div.*',
+  '\<\/div>',
+  'class="block"',
+  'data-col-pos="0"',
+  'data-src=".+?(?=")"',
+  'data-image-height=".+?(?=")"',
+  'data-heightwidthratio=".+?(?=")"',
+  'data-image-width=".+?(?=")"',
+  'style=".+?(?=")"',
+  'data-widget-id=".+?(?=")"',
+  '\?.+?(?=")',
+  'data-col-pos=".+?(?=")"'
+]
+
+removed = data
+for item in to_remove:
+  removed = re.sub(item, '', removed)
+cleaned = [line for line in removed.split('\n') if line.strip() != '']
+cleaned_string = '\n'.join(cleaned)
+cleaned_list = cleaned_string.split('\n')
+list_strip = []
+for item in cleaned_list:
+  list_strip.append(item.strip())
+super_clean_string = '\n'.join(list_strip)
+#print(super_clean_string)
+two_cols = super_clean_string.split('<!-- column -->\n')
+empty = ''
+while empty in two_cols: two_cols.remove(empty)    
+first_col = two_cols[0].split('\n')
+second_col = two_cols[1].split('\n')
+zipped = zip(first_col, second_col)
+almost_final = []
+for item in zipped:
+  for photo in item:
+    add_class = re.sub('  ', ' class="mini-image"', photo, 1)
+    almost_final.append(add_class)
+almost_final_string = '\n'.join(almost_final)
+print(almost_final_string)
+
+# result
+
+<img class="mini-image" alt=""    src="images/11%20corporate_group_grube-brown---geidt-llp-crop-u44552.jpg" id="u4455_img"  >
+<img class="mini-image" alt=""    src="images/12-corporate_portrait_delacey-riebel-family-law-crop-u47172.jpg" id="u4717_img"  >
+<img class="mini-image" alt=""    src="images/13%20corporate_portrait_scott-a-freedman-of-zacks---freedman%2c-pc-crop-u47372.jpg" id="u4737_img"  >
+<img class="mini-image" alt=""    src="images/14%20corporate_portrait_lorber-greenfield---polito-llp-crop-u47572.jpg" id="u4757_img"  >
+<img class="mini-image" alt=""    src="images/141%20corporate_group_bogaards%20law-crop-u4962932.jpg" id="u496293_img"  >
+<img class="mini-image" alt=""    src="images/151corporate_group_alto%20litigation-crop-u4963692.jpg" id="u496369_img"  >
+<img class="mini-image" alt=""    src="images/15_corporate_group_image_teraoka%20-%20partners-crop-u47772.jpg" id="u4777_img"  >
+<img class="mini-image" alt=""    src="images/16%20corporate_group_hartog%20i%20baer%20i%20hand-crop-u4964452.jpg" id="u496445_img"  >
+<img class="mini-image" alt=""    src="images/17%20corporate_portrait_mary-alexander-crop-u48172.jpg" id="u4817_img"  >
+<img class="mini-image" alt=""    src="images/18%20corporate_working_image-crop-u48372.jpg" id="u4837_img"  >
+<img class="mini-image" alt=""    src="images/19%20corporate_group-crop-u48572.jpg" id="u4857_img"  >
+<img class="mini-image" alt=""    src="images/21%20corporate%20_portrait-richard%20sideman-crop-u48772.jpg" id="u4877_img"  >
+<img class="mini-image" alt=""    src="images/22%20corporate_group_simon%20-%20bancroft%20-%20wired%20magazine%20-crop-u48972.jpg" id="u4897_img"  >
+<img class="mini-image" alt=""    src="images/23%20corporate_group_%20image_gwilliam%2c%20ivary%2c%20chiosso-crop-u49172.jpg" id="u4917_img"  >
+<img class="mini-image" alt=""    src="images/24%20corporate%20_portrait--crop-u49372.jpg" id="u4937_img"  >
+<img class="mini-image" alt=""    src="images/25%20corporate_image-crop-u49572.jpg" id="u4957_img"  >
+<img class="mini-image" alt=""    src="images/26%20corporate-group-image_kerr---wagstaffe-crop-u49772.jpg" id="u4977_img"  >
+<img class="mini-image" alt=""    src="images/27%20corporate_safeway%20general_counsel-robert%20gordon-crop-u49972.jpg" id="u4997_img"  >
+<img class="mini-image" alt=""    src="images/27%20corporate_working_group-crop-u50172.jpg" id="u5017_img"  >
+<img class="mini-image" alt=""    src="images/28%20corporate_ceo%20of%20kaiser%20permanente%20_health%20plan%20of%20san%20francisco_blue%20shield%20of%20ca-crop-u50372.jpg" id="u5037_img"  >
+<img class="mini-image" alt=""    src="images/37%20corporate_group-robert%20w%20wood%20pc-crop-u4965352.jpg" id="u496535_img"  >
+<img class="mini-image" alt=""    src="images/38%20corporate-group_venardi%20zurada%20llp-crop-u4965992.jpg" id="u496599_img"  >
+<img class="mini-image" alt=""    src="images/39%20corporate_working_william%20blair-crop-u4966632.jpg" id="u496663_img"  >
+<img class="mini-image" alt=""    src="images/31%20corporate_working_image-crop-u50572.jpg" id="u5057_img"  >
+<img class="mini-image" alt=""    src="images/32%20corporate%20working%20image-crop-u50772.jpg" id="u5077_img"  >
+<img class="mini-image" alt=""    src="images/33%20corporate%20working_william%20blair-crop-u50972.jpg" id="u5097_img"  >
