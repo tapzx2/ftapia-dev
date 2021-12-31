@@ -153,3 +153,147 @@ print('\n'.join(cleaned))
 <img    src="images/75%20industrial%20photography%20_%20tencate%20advanced%20composites954x636.jpg" alt=""    id="u90810_img"  >
 <img    src="images/77%20industrial%20photography%20_%20tencate%20advanced%20composites954x636.jpg" alt=""    id="u90850_img"  >
 <img    src="images/78%20industrial%20photography%20_%20tencate%20advanced%20composites954x636.jpg" alt=""    id="u90870_img"  >
+
+
+# ROUND 2
+
+import re
+
+data = '''<!-- column -->
+<div class="SSSlideLink clip_frame colelem" data-col-pos="0" id="u43494" role="tab" tabindex="-1" aria-selected="false" aria-controls="u43498" style="height: 34px;"><!-- image -->
+<img class="block" data-col-pos="0" alt="" data-heightwidthratio="0.7446808510638298" data-image-width="47" data-image-height="35" src="images/11%20industrial_image_gea%20westfalia%20separator-crop-u434942.jpg?crc=521826467" id="u43494_img" data-widget-id="slideshowu43486" style="height: 34.2553px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="2" id="u43823" role="tab" tabindex="-1" aria-selected="false" aria-controls="u43817" style="height: 34px;"><!-- image -->
+<img class="block" data-col-pos="2" alt="" data-heightwidthratio="0.7446808510638298" data-image-width="47" data-image-height="35" src="images/13%20industrial_image_gea%20westfalia%20separator-crop-u438232.jpg?crc=340115253" id="u43823_img" data-widget-id="slideshowu43486" style="height: 34.2553px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="4" id="u43863" role="tab" tabindex="-1" aria-selected="false" aria-controls="u43857" style="height: 34px;"><!-- image -->
+<img class="block" data-col-pos="4" alt="" data-heightwidthratio="0.7446808510638298" data-image-width="47" data-image-height="35" src="images/15%20industrial_image_gea%20westfalia%20separator-crop-u438632.jpg?crc=3778426794" id="u43863_img" data-widget-id="slideshowu43486" style="height: 34.2553px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="6" id="u43903" role="tab" tabindex="-1" aria-selected="false" aria-controls="u43897" style="height: 34px;"><!-- image -->
+<img class="block" data-col-pos="6" alt="" data-heightwidthratio="0.7446808510638298" data-image-width="47" data-image-height="35" src="images/22%20industrial_image-air%20liquide-crop-u439032.jpg?crc=3901007916" id="u43903_img" data-widget-id="slideshowu43486" style="height: 34.2553px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="8" id="u43943" role="tab" tabindex="-1" aria-selected="false" aria-controls="u43937" style="height: 34px;"><!-- image -->
+<img class="block" data-col-pos="8" alt="" data-heightwidthratio="0.7446808510638298" data-image-width="47" data-image-height="35" src="images/24%20industrial_image-air%20liquide-crop-u439432.jpg?crc=517202968" id="u43943_img" data-widget-id="slideshowu43486" style="height: 34.2553px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="10" id="u43983" role="tab" tabindex="-1" aria-selected="false" aria-controls="u43977" style="height: 34px;"><!-- image -->
+<img class="block" data-col-pos="10" alt="" data-heightwidthratio="0.7446808510638298" data-image-width="47" data-image-height="35" src="images/32%20industrial_ac_transit_hydrogen_station-crop-u439832.jpg?crc=376907971" id="u43983_img" data-widget-id="slideshowu43486" style="height: 34.2553px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="12" id="u44023" role="tab" tabindex="-1" aria-selected="false" aria-controls="u44017" style="height: 34px;"><!-- image -->
+<img class="block" data-col-pos="12" alt="" data-heightwidthratio="0.7446808510638298" data-image-width="47" data-image-height="35" src="images/34%20industrial_ac_transit_hydrogen_station-crop-u440232.jpg?crc=125167886" id="u44023_img" data-widget-id="slideshowu43486" style="height: 34.2553px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="14" id="u44063" role="tab" tabindex="-1" aria-selected="false" aria-controls="u44057" style="height: 34px;"><!-- image -->
+<img class="block" data-col-pos="14" alt="" data-heightwidthratio="0.7446808510638298" data-image-width="47" data-image-height="35" src="images/36%20industrial_ac_transit_hydrogen_station-crop-u440632.jpg?crc=4258850021" id="u44063_img" data-widget-id="slideshowu43486" style="height: 34.2553px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="16" id="u44103" role="tab" tabindex="-1" aria-selected="false" aria-controls="u44097" style="height: 34px;"><!-- image -->
+<img class="block" data-col-pos="16" alt="" data-heightwidthratio="0.7446808510638298" data-image-width="47" data-image-height="35" src="images/41%20industrial_bayer_pharmaceutical_sterile_filling%20facility-crop-u441032.jpg?crc=3825516347" id="u44103_img" data-widget-id="slideshowu43486" style="height: 34.2553px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="18" id="u44143" role="tab" tabindex="-1" aria-selected="false" aria-controls="u44137" style="height: 34px;"><!-- image -->
+<img class="block" data-col-pos="18" alt="" data-heightwidthratio="0.7446808510638298" data-image-width="47" data-image-height="35" src="images/51%20ctp_aviation-crop-u441432.jpg?crc=98978215" id="u44143_img" data-widget-id="slideshowu43486" style="height: 34.2553px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="20" id="u44183" role="tab" tabindex="-1" aria-selected="false" aria-controls="u44177" style="height: 34px;"><!-- image -->
+<img class="block" data-col-pos="20" alt="" data-heightwidthratio="0.7446808510638298" data-image-width="47" data-image-height="35" src="images/53%20ctp_aviation-crop-u441832.jpg?crc=3897633726" id="u44183_img" data-widget-id="slideshowu43486" style="height: 34.2553px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="22" id="u44223" role="tab" tabindex="-1" aria-selected="false" aria-controls="u44217" style="height: 34px;"><!-- image -->
+<img class="block" data-col-pos="22" alt="" data-heightwidthratio="0.7446808510638298" data-image-width="47" data-image-height="35" src="images/63%20industrial_nanogram_corporation-crop-u442232.jpg?crc=339804165" id="u44223_img" data-widget-id="slideshowu43486" style="height: 34.2553px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="24" id="u44263" role="tab" tabindex="-1" aria-selected="false" aria-controls="u44257" style="height: 34px;"><!-- image -->
+<img class="block" data-col-pos="24" alt="" data-heightwidthratio="0.7446808510638298" data-image-width="47" data-image-height="35" src="images/65%20industrial_nanogram_corporation-crop-u442632.jpg?crc=80915175" id="u44263_img" data-widget-id="slideshowu43486" style="height: 34.2553px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="26" id="u90719" role="tab" tabindex="-1" aria-selected="false" aria-controls="u90713" style="height: 34px;"><!-- image -->
+<img class="block" data-col-pos="26" alt="" data-heightwidthratio="0.7446808510638298" data-image-width="47" data-image-height="35" src="images/72%20industrial%20photography%20_%20tencate%20advanced%20composites-crop-u907192.jpg?crc=297993225" id="u90719_img" data-widget-id="slideshowu43486" style="height: 34.2553px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="28" id="u90796" role="tab" tabindex="-1" aria-selected="false" aria-controls="u90790" style="height: 34px;"><!-- image -->
+<img class="block" data-col-pos="28" alt="" data-heightwidthratio="0.7446808510638298" data-image-width="47" data-image-height="35" src="images/74%20industrial%20photography%20_%20tencate%20advanced%20composites-crop-u907962.jpg?crc=411757501" id="u90796_img" data-widget-id="slideshowu43486" style="height: 34.2553px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="30" id="u90856" role="tab" tabindex="-1" aria-selected="false" aria-controls="u90850" style="height: 34px;"><!-- image -->
+<img class="block" data-col-pos="30" alt="" data-heightwidthratio="0.7446808510638298" data-image-width="47" data-image-height="35" src="images/77%20industrial%20photography%20_%20tencate%20advanced%20composites-crop-u908562.jpg?crc=4057800250" id="u90856_img" data-widget-id="slideshowu43486" style="height: 34.2553px;">
+</div>
+<!-- column -->
+<div class="SSSlideLink clip_frame colelem" data-col-pos="1" id="u43803" role="tab" tabindex="-1" aria-selected="false" aria-controls="u43797" style="height: 34px;"><!-- image -->
+<img class="block" data-col-pos="1" alt="" data-heightwidthratio="0.7446808510638298" data-image-width="47" data-image-height="35" src="images/12%20industrial_image_gea%20westfalia%20separator-crop-u438032.jpg?crc=535671198" id="u43803_img" data-widget-id="slideshowu43486" style="height: 34.2553px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="3" id="u43843" role="tab" tabindex="-1" aria-selected="false" aria-controls="u43837" style="height: 34px;"><!-- image -->
+<img class="block" data-col-pos="3" alt="" data-heightwidthratio="0.7446808510638298" data-image-width="47" data-image-height="35" src="images/14%20industrial_image_gea%20westfalia%20separator-crop-u438432.jpg?crc=6485921" id="u43843_img" data-widget-id="slideshowu43486" style="height: 34.2553px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="5" id="u43883" role="tab" tabindex="-1" aria-selected="false" aria-controls="u43877" style="height: 34px;"><!-- image -->
+<img class="block" data-col-pos="5" alt="" data-heightwidthratio="0.7446808510638298" data-image-width="47" data-image-height="35" src="images/21%20industrial_image-air%20liquide-crop-u438832.jpg?crc=4110717662" id="u43883_img" data-widget-id="slideshowu43486" style="height: 34.2553px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="7" id="u43923" role="tab" tabindex="-1" aria-selected="false" aria-controls="u43917" style="height: 34px;"><!-- image -->
+<img class="block" data-col-pos="7" alt="" data-heightwidthratio="0.7446808510638298" data-image-width="47" data-image-height="35" src="images/23%20industrial_image-air%20liquide-crop-u439232.jpg?crc=450688857" id="u43923_img" data-widget-id="slideshowu43486" style="height: 34.2553px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="9" id="u43963" role="tab" tabindex="-1" aria-selected="false" aria-controls="u43957" style="height: 34px;"><!-- image -->
+<img class="block" data-col-pos="9" alt="" data-heightwidthratio="0.7446808510638298" data-image-width="47" data-image-height="35" src="images/31%20industrial_ac_transit_hydrogen_station-crop-u439632.jpg?crc=326623089" id="u43963_img" data-widget-id="slideshowu43486" style="height: 34.2553px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="11" id="u44003" role="tab" tabindex="-1" aria-selected="false" aria-controls="u43997" style="height: 34px;"><!-- image -->
+<img class="block" data-col-pos="11" alt="" data-heightwidthratio="0.7446808510638298" data-image-width="47" data-image-height="35" src="images/33%20industrial_ac_transit_hydrogen_station-crop-u440032.jpg?crc=536101683" id="u44003_img" data-widget-id="slideshowu43486" style="height: 34.2553px;">
+</div>
+<div class="SSSlideLink clip_frame colelem wp-tab-active SSSlideLinkSelected" data-col-pos="13" id="u44043" role="tab" tabindex="0" aria-selected="true" aria-controls="u44037" style="height: 34px;"><!-- image -->
+<img class="block" data-col-pos="13" alt="" data-heightwidthratio="0.7446808510638298" data-image-width="47" data-image-height="35" src="images/35%20industrial_ac_transit_hydrogen_station-crop-u440432.jpg?crc=341618385" id="u44043_img" data-widget-id="slideshowu43486" style="height: 34.2553px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="15" id="u44083" role="tab" tabindex="-1" aria-selected="false" aria-controls="u44077" style="height: 34px;"><!-- image -->
+<img class="block" data-col-pos="15" alt="" data-heightwidthratio="0.7446808510638298" data-image-width="47" data-image-height="35" src="images/37%20industrial_ac_transit_hydrogen_station-crop-u440832.jpg?crc=118153614" id="u44083_img" data-widget-id="slideshowu43486" style="height: 34.2553px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="17" id="u44123" role="tab" tabindex="-1" aria-selected="false" aria-controls="u44117" style="height: 34px;"><!-- image -->
+<img class="block" data-col-pos="17" alt="" data-heightwidthratio="0.7446808510638298" data-image-width="47" data-image-height="35" src="images/42%20industrial_bayer_pharmaceutical_sterile_filling%20facility-crop-u441232.jpg?crc=3760201492" id="u44123_img" data-widget-id="slideshowu43486" style="height: 34.2553px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="19" id="u44163" role="tab" tabindex="-1" aria-selected="false" aria-controls="u44157" style="height: 34px;"><!-- image -->
+<img class="block" data-col-pos="19" alt="" data-heightwidthratio="0.7446808510638298" data-image-width="47" data-image-height="35" src="images/52%20ctp_aviation-crop-u441632.jpg?crc=3957840298" id="u44163_img" data-widget-id="slideshowu43486" style="height: 34.2553px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="21" id="u44203" role="tab" tabindex="-1" aria-selected="false" aria-controls="u44197" style="height: 34px;"><!-- image -->
+<img class="block" data-col-pos="21" alt="" data-heightwidthratio="0.7446808510638298" data-image-width="47" data-image-height="35" src="images/62%20industrial_nanogram_corporation-crop-u442032.jpg?crc=4253849380" id="u44203_img" data-widget-id="slideshowu43486" style="height: 34.2553px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="23" id="u44243" role="tab" tabindex="-1" aria-selected="false" aria-controls="u44237" style="height: 34px;"><!-- image -->
+<img class="block" data-col-pos="23" alt="" data-heightwidthratio="0.7446808510638298" data-image-width="47" data-image-height="35" src="images/64%20industrial_nanogram_corporation-crop-u442432.jpg?crc=3868780730" id="u44243_img" data-widget-id="slideshowu43486" style="height: 34.2553px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="25" id="u90684" role="tab" tabindex="-1" aria-selected="false" aria-controls="u90678" style="height: 34px;"><!-- image -->
+<img class="block" data-col-pos="25" alt="" data-heightwidthratio="0.7446808510638298" data-image-width="47" data-image-height="35" src="images/71%20industrial%20photography%20_%20tencate%20advanced%20composites-crop-u906842.jpg?crc=4182490163" id="u90684_img" data-widget-id="slideshowu43486" style="height: 34.2553px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="27" id="u90739" role="tab" tabindex="-1" aria-selected="false" aria-controls="u90733" style="height: 34px;"><!-- image -->
+<img class="block" data-col-pos="27" alt="" data-heightwidthratio="0.7446808510638298" data-image-width="47" data-image-height="35" src="images/73%20industrial%20photography%20_%20tencate%20advanced%20composites-crop-u907392.jpg?crc=266150373" id="u90739_img" data-widget-id="slideshowu43486" style="height: 34.2553px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="29" id="u90816" role="tab" tabindex="-1" aria-selected="false" aria-controls="u90810" style="height: 34px;"><!-- image -->
+<img class="block" data-col-pos="29" alt="" data-heightwidthratio="0.7446808510638298" data-image-width="47" data-image-height="35" src="images/75%20industrial%20photography%20_%20tencate%20advanced%20composites-crop-u908162.jpg?crc=212733722" id="u90816_img" data-widget-id="slideshowu43486" style="height: 34.2553px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="31" id="u90876" role="tab" tabindex="-1" aria-selected="false" aria-controls="u90870" style="height: 34px;"><!-- image -->
+<img class="block" data-col-pos="31" alt="" data-heightwidthratio="0.7446808510638298" data-image-width="47" data-image-height="35" src="images/78%20industrial%20photography%20_%20tencate%20advanced%20composites-crop-u908762.jpg?crc=315660477" id="u90876_img" data-widget-id="slideshowu43486" style="height: 34.2553px;">
+</div>'''
+
+to_remove = [
+  '\<div.*',
+  '\<\/div>',
+  'class="block"',
+  'data-col-pos="0"',
+  'data-src=".+?(?=")"',
+  'data-image-height=".+?(?=")"',
+  'data-heightwidthratio=".+?(?=")"',
+  'data-image-width=".+?(?=")"',
+  'style=".+?(?=")"',
+  'data-widget-id=".+?(?=")"',
+  '\?.+?(?=")',
+  'data-col-pos=".+?(?=")"'
+]
+
+removed = data
+for item in to_remove:
+  removed = re.sub(item, '', removed)
+cleaned = [line for line in removed.split('\n') if line.strip() != '']
+cleaned_string = '\n'.join(cleaned)
+cleaned_list = cleaned_string.split('\n')
+list_strip = []
+for item in cleaned_list:
+  list_strip.append(item.strip())
+super_clean_string = '\n'.join(list_strip)
+#print(super_clean_string)
+two_cols = super_clean_string.split('<!-- column -->\n')
+empty = ''
+while empty in two_cols: two_cols.remove(empty)    
+first_col = two_cols[0].split('\n')
+second_col = two_cols[1].split('\n')
+zipped = zip(first_col, second_col)
+almost_final = []
+for item in zipped:
+  for photo in item:
+    add_class = re.sub('  ', ' class="mini-image"', photo, 1)
+    almost_final.append(add_class)
+almost_final_string = '\n'.join(almost_final)
+print(almost_final_string)

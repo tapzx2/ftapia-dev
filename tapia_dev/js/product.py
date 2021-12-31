@@ -105,3 +105,110 @@ print('\n'.join(cleaned))
 <img    src="images/51%20product_columbus_distributing954x636.jpg" alt=""    id="u47256_img"  >
 <img    src="images/52%20product_columbus_distributing954x636.jpg" alt=""    id="u47276_img"  >
 <img    src="images/53product_car_ferrari%20maserati%20of%20silicon%20valley954x636.jpg" alt=""    id="u719064_img"  >
+
+
+## ROUND 2
+
+import re
+
+data = '''<!-- column -->
+<div class="SSSlideLink clip_frame colelem" data-col-pos="0" id="u718942" role="tab" tabindex="-1" aria-selected="false" aria-controls="u718920" style="height: 22px;"><!-- image -->
+<img class="block" data-col-pos="0" alt="" data-heightwidthratio="0.8620689655172413" data-image-width="29" data-image-height="25" src="images/11%20product%20photographer%20san%20francisco%20_cyan-crop-u7189423.jpg?crc=4581566" id="u718942_img" data-widget-id="slideshowu46659" style="height: 22.4138px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="2" id="u46962" role="tab" tabindex="-1" aria-selected="false" aria-controls="u46956" style="height: 22px;"><!-- image -->
+<img class="block" data-col-pos="2" alt="" data-heightwidthratio="0.8620689655172413" data-image-width="29" data-image-height="25" src="images/14%20product_photography-arco-associates-inc-crop-u469623.jpg?crc=139423987" id="u46962_img" data-widget-id="slideshowu46659" style="height: 22.4138px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="4" id="u47002" role="tab" tabindex="-1" aria-selected="false" aria-controls="u46996" style="height: 22px;"><!-- image -->
+<img class="block" data-col-pos="4" alt="" data-heightwidthratio="0.8620689655172413" data-image-width="29" data-image-height="25" src="images/16%20product_photography-xei%20scientific%2c%20inc-crop-u470023.jpg?crc=272942190" id="u47002_img" data-widget-id="slideshowu46659" style="height: 22.4138px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="6" id="u47042" role="tab" tabindex="-1" aria-selected="false" aria-controls="u47036" style="height: 22px;"><!-- image -->
+<img class="block" data-col-pos="6" alt="" data-heightwidthratio="0.8620689655172413" data-image-width="29" data-image-height="25" src="images/18%20product_photography_mchale%20-%20koepke%20communications-crop-u470423.jpg?crc=158034231" id="u47042_img" data-widget-id="slideshowu46659" style="height: 22.4138px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="8" id="u47082" role="tab" tabindex="-1" aria-selected="false" aria-controls="u47076" style="height: 22px;"><!-- image -->
+<img class="block" data-col-pos="8" alt="" data-heightwidthratio="0.8620689655172413" data-image-width="29" data-image-height="25" src="images/21%20product_image_bio-rad_laboratories-crop-u470823.jpg?crc=4056554093" id="u47082_img" data-widget-id="slideshowu46659" style="height: 22.4138px;">
+</div>
+<div class="SSSlideLink clip_frame colelem wp-tab-active SSSlideLinkSelected" data-col-pos="10" id="u47122" role="tab" tabindex="0" aria-selected="true" aria-controls="u47116" style="height: 22px;"><!-- image -->
+<img class="block" data-col-pos="10" alt="" data-heightwidthratio="0.8620689655172413" data-image-width="29" data-image-height="25" src="images/31%20product_jewel-anna%20beck-design-crop-u471223.jpg?crc=4041217942" id="u47122_img" data-widget-id="slideshowu46659" style="height: 22.4138px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="12" id="u47162" role="tab" tabindex="-1" aria-selected="false" aria-controls="u47156" style="height: 22px;"><!-- image -->
+<img class="block" data-col-pos="12" alt="" data-heightwidthratio="0.8620689655172413" data-image-width="29" data-image-height="25" src="images/33%20product_jewelry_chris_nikolas_fine_jewelry-crop-u471623.jpg?crc=407846424" id="u47162_img" data-widget-id="slideshowu46659" style="height: 22.4138px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="14" id="u47202" role="tab" tabindex="-1" aria-selected="false" aria-controls="u47196" style="height: 22px;"><!-- image -->
+<img class="block" data-col-pos="14" alt="" data-heightwidthratio="0.8620689655172413" data-image-width="29" data-image-height="25" src="images/42%20product_image_go-smile-crop-u472023.jpg?crc=365004886" id="u47202_img" data-widget-id="slideshowu46659" style="height: 22.4138px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="16" id="u47242" role="tab" tabindex="-1" aria-selected="false" aria-controls="u47236" style="height: 22px;"><!-- image -->
+<img class="block" data-col-pos="16" alt="" data-heightwidthratio="0.8620689655172413" data-image-width="29" data-image-height="25" src="images/44%20product-glass_hensley%20organic-crop-u472423.jpg?crc=3828077653" id="u47242_img" data-widget-id="slideshowu46659" style="height: 22.4138px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="18" id="u47282" role="tab" tabindex="-1" aria-selected="false" aria-controls="u47276" style="height: 22px;"><!-- image -->
+<img class="block" data-col-pos="18" alt="" data-heightwidthratio="0.8620689655172413" data-image-width="29" data-image-height="25" src="images/52%20product_columbus_distributing-crop-u472823.jpg?crc=4130070025" id="u47282_img" data-widget-id="slideshowu46659" style="height: 22.4138px;">
+</div><!-- column -->
+<div class="SSSlideLink clip_frame colelem" data-col-pos="1" id="u46922" role="tab" tabindex="-1" aria-selected="false" aria-controls="u46916" style="height: 22px;"><!-- image -->
+<img class="block" data-col-pos="1" alt="" data-heightwidthratio="0.8620689655172413" data-image-width="29" data-image-height="25" src="images/12%20product_photography%20san%20francisco%20bay%20area_parker%20hannifin%20%e2%80%93%20veriflo%20division-crop-u469223.jpg?crc=3819326544" id="u46922_img" data-widget-id="slideshowu46659" style="height: 22.4138px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="3" id="u46982" role="tab" tabindex="-1" aria-selected="false" aria-controls="u46976" style="height: 22px;"><!-- image -->
+<img class="block" data-col-pos="3" alt="" data-heightwidthratio="0.8620689655172413" data-image-width="29" data-image-height="25" src="images/15%20product_photography-arco-associates-inc-crop-u469823.jpg?crc=411304626" id="u46982_img" data-widget-id="slideshowu46659" style="height: 22.4138px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="5" id="u47022" role="tab" tabindex="-1" aria-selected="false" aria-controls="u47016" style="height: 22px;"><!-- image -->
+<img class="block" data-col-pos="5" alt="" data-heightwidthratio="0.8620689655172413" data-image-width="29" data-image-height="25" src="images/17%20product_photography-xei%20scientific%2c%20inc-crop-u470223.jpg?crc=365695019" id="u47022_img" data-widget-id="slideshowu46659" style="height: 22.4138px;">
+</div>
+<div class="SSSlideLink clip_frame colelem wp-tab-active SSSlideLinkSelected" data-col-pos="7" id="u47062" role="tab" tabindex="0" aria-selected="true" aria-controls="u47056" style="height: 22px;"><!-- image -->
+<img class="block" data-col-pos="7" alt="" data-heightwidthratio="0.8620689655172413" data-image-width="29" data-image-height="25" src="images/19%20product_photography-santur%20corporation%20-crop-u470623.jpg?crc=4002850665" id="u47062_img" data-widget-id="slideshowu46659" style="height: 22.4138px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="9" id="u47102" role="tab" tabindex="-1" aria-selected="false" aria-controls="u47096" style="height: 22px;"><!-- image -->
+<img class="block" data-col-pos="9" alt="" data-heightwidthratio="0.8620689655172413" data-image-width="29" data-image-height="25" src="images/22%20product_image_bio-rad_laboratories-crop-u471023.jpg?crc=201369102" id="u47102_img" data-widget-id="slideshowu46659" style="height: 22.4138px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="11" id="u47142" role="tab" tabindex="-1" aria-selected="false" aria-controls="u47136" style="height: 22px;"><!-- image -->
+<img class="block" data-col-pos="11" alt="" data-heightwidthratio="0.8620689655172413" data-image-width="29" data-image-height="25" src="images/32%20product_jewel-anna%20beck-designjpg-crop-u471423.jpg?crc=4015224569" id="u47142_img" data-widget-id="slideshowu46659" style="height: 22.4138px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="13" id="u47182" role="tab" tabindex="-1" aria-selected="false" aria-controls="u47176" style="height: 22px;"><!-- image -->
+<img class="block" data-col-pos="13" alt="" data-heightwidthratio="0.8620689655172413" data-image-width="29" data-image-height="25" src="images/41%20product_image_go-smile-crop-u471823.jpg?crc=3964339345" id="u47182_img" data-widget-id="slideshowu46659" style="height: 22.4138px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="15" id="u47222" role="tab" tabindex="-1" aria-selected="false" aria-controls="u47216" style="height: 22px;"><!-- image -->
+<img class="block" data-col-pos="15" alt="" data-heightwidthratio="0.8620689655172413" data-image-width="29" data-image-height="25" src="images/43%20product_ac_label-crop-u472223.jpg?crc=401143211" id="u47222_img" data-widget-id="slideshowu46659" style="height: 22.4138px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="17" id="u47262" role="tab" tabindex="-1" aria-selected="false" aria-controls="u47256" style="height: 22px;"><!-- image -->
+<img class="block" data-col-pos="17" alt="" data-heightwidthratio="0.8620689655172413" data-image-width="29" data-image-height="25" src="images/51%20product_columbus_distributing-crop-u472623.jpg?crc=3963922733" id="u47262_img" data-widget-id="slideshowu46659" style="height: 22.4138px;">
+</div>
+<div class="SSSlideLink clip_frame colelem" data-col-pos="19" id="u719086" role="tab" tabindex="-1" aria-selected="false" aria-controls="u719064" style="height: 22px;"><!-- image -->
+<img class="block" data-col-pos="19" alt="" data-heightwidthratio="0.8620689655172413" data-image-width="29" data-image-height="25" src="images/53product_car_ferrari%20maserati%20of%20silicon%20valley-crop-u7190863.jpg?crc=75097052" id="u719086_img" data-widget-id="slideshowu46659" style="height: 22.4138px;">
+</div>'''
+
+to_remove = [
+  '\<div.*',
+  '\<\/div>',
+  'class="block"',
+  'data-col-pos="0"',
+  'data-src=".+?(?=")"',
+  'data-image-height=".+?(?=")"',
+  'data-heightwidthratio=".+?(?=")"',
+  'data-image-width=".+?(?=")"',
+  'style=".+?(?=")"',
+  'data-widget-id=".+?(?=")"',
+  '\?.+?(?=")',
+  'data-col-pos=".+?(?=")"'
+]
+
+removed = data
+for item in to_remove:
+  removed = re.sub(item, '', removed)
+cleaned = [line for line in removed.split('\n') if line.strip() != '']
+cleaned_string = '\n'.join(cleaned)
+cleaned_list = cleaned_string.split('\n')
+list_strip = []
+for item in cleaned_list:
+  list_strip.append(item.strip())
+super_clean_string = '\n'.join(list_strip)
+#print(super_clean_string)
+two_cols = super_clean_string.split('<!-- column -->\n')
+empty = ''
+while empty in two_cols: two_cols.remove(empty)    
+first_col = two_cols[0].split('\n')
+second_col = two_cols[1].split('\n')
+zipped = zip(first_col, second_col)
+almost_final = []
+for item in zipped:
+  for photo in item:
+    add_class = re.sub('  ', ' class="mini-image"', photo, 1)
+    almost_final.append(add_class)
+almost_final_string = '\n'.join(almost_final)
+print(almost_final_string)
