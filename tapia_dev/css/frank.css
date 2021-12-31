@@ -4,6 +4,9 @@
     max-width:700px;
     font-size: 16px;
     color:rgb(224, 224, 224);
+    background-color: rgb(70, 70, 70);
+    padding: 20px;
+    margin: 0 auto;
 }
 
 .about-frank > p {

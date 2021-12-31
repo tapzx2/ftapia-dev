@@ -1,3 +1,10 @@
+/* colors */
+/* less text: white */
+/* blocks of text: color:rgb(224, 224, 224); */
+/* link highlight: orange */
+/* h3 text block headings: orange */
+/* text frame for legiblity: rgb(70, 70, 70); */
+
 
 /* layout */
 
@@ -37,7 +44,7 @@ a, :link {
     cursor: pointer;
     color:white;
 }
-    
+
 a:visited {
     color:white;
 }

@@ -1,0 +1,21 @@
+.right{
+ display:flex;
+ flex-direction: column;
+ margin: 0 auto;
+ background-color: rgb(70, 70, 70);
+ padding: 20px;
+ color:rgb(224, 224, 224);
+ max-width:700px;
+}
+
+.client-list{
+    display:flex;
+}
+
+.client-list > div {
+    margin-left:20px;
+}
+
+p {
+    margin-bottom: 4px;
+}
