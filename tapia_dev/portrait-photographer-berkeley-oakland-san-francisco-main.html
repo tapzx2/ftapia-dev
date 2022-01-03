@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frank Tapia Commercial Photograpy Studio San Francisco Bay Area</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/portraits.css"
+</head>
+<body>
+    <div class="section main-content">
+        <div class="left">
+            <div class="business-card">
+                <a id="badge" href="index.html">
+                    <h1>Frank Tapia</h1>
+                    <h2>Commerical<br>Photography Studio</h2>
+                    <h2>San Francisco<br>Bay Area</h2>
+                </a>
+                <div><a id="phone" href="tel:5108490772">510 849-0772</a></div>
+                <div><a id="email" href="mailto:frank1@ftapia.com">frank1@ftapia.com</a></div>
+            </div>
+            <nav class="menu-container">
+                <ul>
+                    <li class="first-level">PORTFOLIO
+                        <ul>
+                            <li class="second-level"><a href="advertising-photographer-san-francisco-bay-area.html"> advertisting</a></li>
+                            <li class="second-level"><a href="architectural-photographer-san-francisco-bay-area.html">architectural</a></li>
+                            <li class="second-level"><a href="corporate-photographer-san-francisco-bay-area.html">corporate</a></li>
+                            <li class="second-level"><a href="industrial-photographer-san-francisco-bay-area.html">industrial</a></li>
+                            <li class="second-level"><a href="portrait-photographer-berkeley-oakland-san-francisco.html">portrait</a></li>
+                            <li class="second-level"><a href="product-photographer-san-francisco-product-photographer-oakland.html">product</a></li>
+                        </ul>
+                    </li>
+                    <li class="first-level">ABOUT
+                        <ul>
+                            <li class="second-level"><a href="frank.html">frank</a></li>
+                            <li class="second-level"><a href="blog.html">blog</a></li>
+                            <li class="second-level"><a href="clients.html">clients</a></li>
+                        </ul>
+                    </li>
+                    <li class="first-level">SERVICES
+                        <ul>
+                            <li class="second-level"><a href="portraits.html">portraits</a></li>
+                            <li class="second-level"><a href="photo-studio.html">studio</a></li>
+                            <li class="second-level"><a href="cost.html">cost</a></li>
+                        </ul>
+                    </li>
+                    <li class="first-level">
+                        <a href="contact.html">CONTACT</a>
+                    </li>
+                    <li class="first-level icon">
+                        <a target="_blank" href="https://www.linkedin.com/in/franktapia/"><img src="icons/frank-tapia-commercial-photographer-linkedin.svg"></a>
+                    </li>
+                    <li class="first-level icon">
+                        <a id="facebook" target="_blank" href="https://www.facebook.com/FrankTapiaPhotographyStudio/"><img class="facebook" src="icons/frank-tapia-commercial-photographer-facebook.svg"></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="right">
+            <div class="portrait-container">
+                <img src="images/18%20studio%20portraits%20berkeley579x386.jpg?crc=459438024">
+                <div class="text-block">
+                    <h2>Studio Portraits / Headshots</h2>
+                    <p>The Berkeley Portrait Photography Studio has backgrounds from Black to White and various colors. The portrait photography studio is located in Berkeley, CA.  A  portrait photography studio can also be set-up in a clients location.</p>
+                </div>
+                <img src="images/712 san francisco beauty portrait photography-crop-u367672.jpg">
+                <div class="text-block">
+                    <h2>Beauty Portraits</h2>
+                    <p>People photographed using beauty lighting and beauty post processing. Beauty portraits are only taken in the Berkeley Portrait Photography Studio.</p>
+                </div>
+                <img src="images/49%20san%20francisco%20corporate%20headshot%20photography604x403.jpg?crc=145835252">
+                <div class="text-block">
+                    <h2>Corporate Headshots</h2>
+                    <p>Corporate headshots illuminate the subject's life style and surroundings. Most of our corporate headshots are in a work environment, thus these portraits are inter changeable with Corporate portraits or Business portraits.</p>
+                </div>
+            </div>
+
+        </div>
+        
+    </div>
+</body>
+<script>
+
+var indexValue = 0;
+const img = document.querySelectorAll(".right > img");
+const mini_img = document.querySelectorAll(".mini-images > img");
+
+for(x = 0; x < img.length; x++){
+    img[x].style.display = "none";
+}
+img[indexValue].style.display = "block";
+
+function slideShowNav(){
+    for (x=0; x < mini_img.length; x++){
+        mini_img[x].imageNumber = x
+        mini_img[x].onclick = function beenClicked() {
+            for(x = 0; x < img.length; x++){
+                img[x].style.display = "none";
+            }
+            console.log("mini image number clicked: "  + event.target.imageNumber.toString())
+            console.log()
+            console.log("mini image index: " + indexValue.toString());
+            indexValue = event.target.imageNumber;
+            img[indexValue].style.display = "block";
+        }
+    }
+}
+
+function slideShow(){
+    setTimeout(slideShow, 2500);
+    setTimeout(() =>{
+        console.log('running')
+        img[indexValue].style.display = "none";
+        indexValue++;
+        if(indexValue >= img.length) {
+            indexValue = 0
+        }
+        img[indexValue].style.display = "block";
+    }, 2500)  
+}
+
+slideShowNav();
+slideShow();
+
+</script>
+</html>

@@ -1,0 +1,14 @@
+.portrait-container {
+    max-width:700px;
+    display: grid;
+    grid-template-columns: 1fr .75fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 20px 20px;
+    grid-auto-flow: row;
+    align-items: start;
+    grid-template-areas:
+      ". ."
+      ". ."
+      ". .";
+  }
+  

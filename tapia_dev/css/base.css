@@ -27,6 +27,9 @@
     width:95%;
     max-width:100%;
     filter: drop-shadow(16px 16px 10px black);
+    max-height: 90vh;
+    object-fit:contain;
+
     
 }
 
@@ -100,6 +103,7 @@ li.first-level{
 
 li.second-level{
     font-size:12px;
+    margin-bottom: 22px;
 }
 
 ul li{
